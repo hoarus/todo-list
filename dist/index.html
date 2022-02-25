@@ -5,8 +5,45 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link href="normalise.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
 </head>
 <body>
+  <div class="page-wrapper">
+    <nav>
+      <h1>To-Do Application</h1>
+    </nav>
+    <section class="project-view">
+      <h1>Project 11</h1>
+      <div class="task-containers">
+        <div class="task-container to-do-container">
+          <h2>To Do</h2>
+          <button>Add Task</button>
+          <div class="task">
+            <h3 class="task-title">New Task</h3>
+            <p class="task-priority">High</p>
+            <p class="task-date">18/02/1994</p>
+            <p class="task-description">This is going to be a difficult task</p>
+          </div>
+          <div class="task">
+            <h3 class="task-title">New Task</h3>
+            <p class="task-priority">High</p>
+            <p class="task-date">18/02/1994</p>
+            <p class="task-description">This is going to be a difficult task</p>
+          </div>
+        </div>
+        <div class="task-container completed-container">
+          <h2>Completed</h2>
+          <div class="task">
+            <h3 class="task-title">New Task</h3>
+            <p class="task-priority">High</p>
+            <p class="task-date">18/02/1994</p>
+            <p class="task-description">This is going to be a difficult task</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
   
 </body>
 <script src="bundle.js"></script>

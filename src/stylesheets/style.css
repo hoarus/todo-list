@@ -1,0 +1,82 @@
+html {
+  height: 100%;
+}
+
+body{
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  color: rgb(0, 0, 48);
+}
+
+h1, h2, h3 {
+  text-align: center;
+}
+
+h2, h3 {
+  margin-top: 0rem;
+}
+
+.page-wrapper, .project-view, .task-container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.page-wrapper {
+  background-color: antiquewhite;
+  height: 100%;
+}
+
+nav{
+  background-color: cornflowerblue;
+  display: flex;
+  justify-content: center;
+}
+
+.task-containers {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.task-container {
+  border: solid 2px cornflowerblue;
+  border-radius: 20px;
+  width: 30%;
+  padding: 1rem;
+  gap: 1rem;
+  background-color: rgb(190, 212, 253);
+}
+
+h2 {
+  margin-bottom: 0px;
+}
+
+.task {
+  border: solid 2px cornflowerblue;
+  padding: 1rem;
+}
+
+.task-priority::before {
+  content: "Priority: ";
+  font-weight: bold;
+}
+
+.task-date::before {
+  content: "Due: ";
+  font-weight: bold;
+}
+
+button {
+  margin: 0px;
+  width: 50%;
+  padding: 1rem;
+  font-weight: bold;
+  background-color: antiquewhite;
+}
+
+
