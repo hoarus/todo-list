@@ -1,14 +1,20 @@
+
+
 html {
   height: 100%;
 }
 
 body{
   height: 100%;
+  --textPrimary: rgb(0, 0, 48);
+  --backgroundPrimary: antiquewhite;
+  --backgroundAccent: cornflowerblue;
+  --backgroundTertiary: rgb(190, 212, 253);
 }
 
 * {
   box-sizing: border-box;
-  color: rgb(0, 0, 48);
+  color: var(--textPrimary)
 }
 
 h1, h2, h3 {
@@ -27,12 +33,12 @@ h2, h3 {
 
 
 .page-wrapper {
-  background-color: antiquewhite;
+  background-color: var(--backgroundPrimary);
   height: 100%;
 }
 
 nav{
-  background-color: cornflowerblue;
+  background-color: var(--backgroundAccent);
   display: flex;
   justify-content: center;
 }
@@ -44,12 +50,12 @@ nav{
 }
 
 .task-container {
-  border: solid 2px cornflowerblue;
+  border: solid 2px var(--backgroundAccent);
   border-radius: 20px;
   width: 30%;
   padding: 1rem;
   gap: 1rem;
-  background-color: rgb(190, 212, 253);
+  background-color: var(--backgroundTertiary);
 }
 
 h2 {
@@ -57,7 +63,7 @@ h2 {
 }
 
 .task {
-  border: solid 2px cornflowerblue;
+  border: solid 2px var(--backgroundAccent);
   padding: 1rem;
 }
 
@@ -73,10 +79,24 @@ h2 {
 
 button {
   margin: 0px;
-  width: 50%;
+  width: 30%;
   padding: 1rem;
   font-weight: bold;
-  background-color: antiquewhite;
+  background-color: var(--backgroundPrimary);
+  border: solid 2px var(--backgroundAccent);
+  border-radius: 5px;
 }
 
+button:hover {
+  background-color: var(--backgroundTertiary);
+}
+
+button:active {
+  background-color: var(--backgroundAccent);
+}
+
+button {
+  display: fixed;
+  offset: 200px;
+}
 
