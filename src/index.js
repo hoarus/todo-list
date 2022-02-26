@@ -1,5 +1,6 @@
 import './stylesheets/normalise.css'
 import './stylesheets/style.css';
+import {  displayItem, hideItem, createTask, completeTask,} from './domManipulation.js';
 
 // Query Selectors
   //Containers
@@ -13,8 +14,6 @@ let closeTaskForm = document.querySelector(".close-task-form");
 let createTaskButton = document.querySelector(".create-task");
 let checkBoxes = document.querySelectorAll(".check");
 
-//Write code to make add new task
-
 // Event Listeners
 newTaskButton.addEventListener("click", () => {
   displayItem(taskForm);
@@ -27,38 +26,12 @@ closeTaskForm.addEventListener("click", () => {
 });
 
 createTaskButton.addEventListener("click", () => {
-  createTask();
+  createTask(toDoContainer);
 });
 
 for (const checkBox of checkBoxes) {
   checkBox.addEventListener("click", () => {
     let task = checkBox.parentElement;
-    completeTask(task);
+    completeTask(task, completedContainer);
   });
-}
-
-//Functions
-
-function displayItem(item) {
-  item.classList.remove("hidden");
-}
-
-function hideItem(item) {
-  item.classList.add("hidden");
-}
-
-function createTask(){
-  let newTask = generateTask();
-  toDoContainer.appendChild(newTask);
-}
-
-function generateTask(){
-  const newTask = document.createElement("div");
-  newTask.setAttribute("class", "task");
-  newTask.textContent = "Test";
-  return newTask;
-}
-
-function completeTask(task) {
-  completedContainer.appendChild(task);
 }
