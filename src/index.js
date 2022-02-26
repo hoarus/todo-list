@@ -1,13 +1,18 @@
 import './stylesheets/normalise.css'
 import './stylesheets/style.css';
 
-
-let newTaskButton = document.querySelector(".new-task");
-let taskForm = document.querySelector(".task-form-container");
-let closeTaskForm = document.querySelector(".close-task-form");
-let toDoContainer = document.querySelector(".to-do-container");
-let createTaskButton = document.querySelector(".create-task");
+// Query Selectors
+  //Containers
 let pageWrapper = document.querySelector(".page-wrapper");
+let toDoContainer = document.querySelector(".to-do-container");
+let completedContainer = document.querySelector(".completed-container");
+let taskForm = document.querySelector(".task-form-container");
+  // Buttons
+let newTaskButton = document.querySelector(".new-task");
+let closeTaskForm = document.querySelector(".close-task-form");
+let createTaskButton = document.querySelector(".create-task");
+let checkBoxes = document.querySelectorAll(".check");
+
 //Write code to make add new task
 
 // Event Listeners
@@ -24,6 +29,13 @@ closeTaskForm.addEventListener("click", () => {
 createTaskButton.addEventListener("click", () => {
   createTask();
 });
+
+for (const checkBox of checkBoxes) {
+  checkBox.addEventListener("click", () => {
+    let task = checkBox.parentElement;
+    completeTask(task);
+  });
+}
 
 //Functions
 
@@ -45,4 +57,8 @@ function generateTask(){
   newTask.setAttribute("class", "task");
   newTask.textContent = "Test";
   return newTask;
+}
+
+function completeTask(task) {
+  completedContainer.appendChild(task);
 }
