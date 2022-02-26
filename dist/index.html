@@ -43,6 +43,24 @@
         </div>
       </div>
     </section>
+    <div class="task-form-container hidden">
+      <a href="#" class="close"></a>
+      <h2>Add a Task</h2>
+      <form class="task-form">
+        <label for="title">Task Title:</label>
+        <input type="text" id="title" name="title" class="title">
+        <label for="due-date">Due Date:</label>
+        <input type="date" id="due-date" name="due-date">
+        <label for="description">Description:</label>
+        <textarea id="description" name="desciption" rows="4"></textarea>
+        <label for="priority">Priority:</label>
+        <select name="priority" id="priority">
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
+      </form> 
+    </div>
   </div>
   
 </body>

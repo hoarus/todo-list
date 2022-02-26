@@ -1,4 +1,4 @@
-
+/* General Styles */
 
 html {
   height: 100%;
@@ -37,11 +37,17 @@ h2, h3 {
   height: 100%;
 }
 
+/* Navbar  */
+
+
 nav{
   background-color: var(--backgroundAccent);
   display: flex;
   justify-content: center;
 }
+
+
+/* Task boxes  */
 
 .task-containers {
   display: flex;
@@ -77,6 +83,8 @@ h2 {
   font-weight: bold;
 }
 
+/* Buttons */
+
 button {
   margin: 0px;
   width: 30%;
@@ -100,3 +108,73 @@ button {
   offset: 200px;
 }
 
+/* Pop-Ups */
+
+.task-form-container {
+  position: fixed;
+  background-color: var(--backgroundAccent);
+  border: solid 2px var(--textPrimary);
+  padding: 2rem;
+  border-radius: 25px;
+  width: auto;
+  left: 33%;
+  right: 33%;
+  top: 20%;
+  opacity: 1;
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin-inline: 20%;
+  margin-block: 5%;
+  gap: 0.3rem;
+  opacity: 1;
+}
+
+textarea {
+  max-width: 100%;
+}
+
+input, select {
+  height: 2rem
+}
+
+label {
+  font-weight: bold;
+}
+
+/* Close Button */
+.close {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: #333;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
+
+/* hidden */
+
+.hidden {
+  display: none;
+}
