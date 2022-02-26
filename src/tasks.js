@@ -8,7 +8,11 @@ const task = (id, title, dueDate, priority, description) => {
   let setToDo = () => {
     status = "To Do"
   }
-  return { id, title, dueDate, priority, description, status, setComplete, setToDo };
+  return { id, title, dueDate, priority, description, setComplete, setToDo,
+    get status() {
+      return status;
+    }, 
+  };
 };
 
 

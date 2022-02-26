@@ -71,8 +71,7 @@ import { project } from './projects.js';
       checkBox.addEventListener("click", () => {
         let task = checkBox.parentElement;
         let completedContainer = document.querySelector(".completed-container");
-        completeTask(task, completedContainer);
-        console.log("Check");
+        completeTask(task, completedContainer, currentProject);
       });
     }
   }

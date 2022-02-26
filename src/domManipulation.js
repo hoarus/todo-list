@@ -66,7 +66,9 @@ function createTask(parent, task){
   parent.appendChild(newTask);
 }
 
-function completeTask(task, destination) {
+function completeTask(task, destination, project) {
+  let currentTask = project.tasks[task.id];
+  currentTask.setComplete();
   destination.appendChild(task);
 }
 
