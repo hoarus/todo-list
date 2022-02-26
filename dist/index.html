@@ -18,8 +18,9 @@
       <div class="task-containers">
         <div class="task-container to-do-container">
           <h2>To Do</h2>
-          <button>New Task</button>
+          <button class="new-task">New Task</button>
           <div class="task">
+            <div class="check"></div>
             <h3 class="task-title">New Task</h3>
             <p class="task-priority">High</p>
             <p class="task-date">18/02/1994</p>
@@ -43,24 +44,25 @@
         </div>
       </div>
     </section>
-    <div class="task-form-container hidden">
-      <a href="#" class="close"></a>
-      <h2>Add a Task</h2>
-      <form class="task-form">
-        <label for="title">Task Title:</label>
-        <input type="text" id="title" name="title" class="title">
-        <label for="due-date">Due Date:</label>
-        <input type="date" id="due-date" name="due-date">
-        <label for="description">Description:</label>
-        <textarea id="description" name="desciption" rows="4"></textarea>
-        <label for="priority">Priority:</label>
-        <select name="priority" id="priority">
-          <option value="High">High</option>
-          <option value="Medium">Medium</option>
-          <option value="Low">Low</option>
-        </select>
-      </form> 
-    </div>
+  </div>
+  <div class="task-form-container hidden">
+    <a href="#" class="close close-task-form"></a>
+    <h2>Add a Task</h2>
+    <form class="task-form">
+      <label for="title">Task Title:</label>
+      <input type="text" id="title" name="title" class="title">
+      <label for="due-date">Due Date:</label>
+      <input type="date" id="due-date" name="due-date">
+      <label for="description">Description:</label>
+      <textarea id="description" name="desciption" rows="4"></textarea>
+      <label for="priority">Priority:</label>
+      <select name="priority" id="priority">
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+      <button class="create-task" type="button">Add Task</button>
+    </form> 
   </div>
   
 </body>

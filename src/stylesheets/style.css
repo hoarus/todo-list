@@ -12,6 +12,10 @@ body{
   --backgroundTertiary: rgb(190, 212, 253);
 }
 
+.dimmed {
+  opacity: 0.3;
+}
+
 * {
   box-sizing: border-box;
   color: var(--textPrimary)
@@ -71,6 +75,7 @@ h2 {
 .task {
   border: solid 2px var(--backgroundAccent);
   padding: 1rem;
+  position: relative;
 }
 
 .task-priority::before {
@@ -87,7 +92,6 @@ h2 {
 
 button {
   margin: 0px;
-  width: 30%;
   padding: 1rem;
   font-weight: bold;
   background-color: var(--backgroundPrimary);
@@ -103,9 +107,12 @@ button:active {
   background-color: var(--backgroundAccent);
 }
 
-button {
-  display: fixed;
-  offset: 200px;
+.new-task {
+  width: 30%;
+}
+
+.create-task {
+  border-color: var(--textPrimary);
 }
 
 /* Pop-Ups */
@@ -172,9 +179,35 @@ label {
   transform: rotate(-45deg);
 }
 
+.close:active {
+  transform: scale(1.1);
+}
+/* Tick Button */
+
+.check {
+  position: absolute;
+  left: 90%;
+  display: inline-block;
+  transform: rotate(45deg);
+  height: 24px;
+  width: 12px;
+  border-bottom: 4px solid black;;
+  border-right: 4px solid black;;
+  opacity: 0.3;
+}
+
+.check:hover {
+  opacity: 1;
+}
+
+.check:active {
+  transform: rotate(45deg) scale(1.1);
+}
+
 
 /* hidden */
 
 .hidden {
   display: none;
 }
+
