@@ -12,7 +12,7 @@ let taskForm = document.querySelector(".task-form-container");
 let newTaskButton = document.querySelector(".new-task");
 let closeTaskForm = document.querySelector(".close-task-form");
 let createTaskButton = document.querySelector(".create-task");
-let checkBoxes = document.querySelectorAll(".check");
+let checkBoxes = document.getElementsByClassName("check");
 
 // Event Listeners
 newTaskButton.addEventListener("click", () => {
@@ -26,12 +26,51 @@ closeTaskForm.addEventListener("click", () => {
 });
 
 createTaskButton.addEventListener("click", () => {
-  createTask(toDoContainer);
+  let newTask = createTaskFromForm();
+  console.log(newTask);
+  createTask(toDoContainer, newTask.title, newTask.dueDate, newTask.priority, newTask.description);
+  console.log(checkBoxes);
+  setCheckBoxesToListen();
+  let form = document.querySelector(".task-form");
+  form.reset();
+  hideItem(taskForm);
+  pageWrapper.classList.remove("dimmed");
 });
 
-for (const checkBox of checkBoxes) {
-  checkBox.addEventListener("click", () => {
-    let task = checkBox.parentElement;
-    completeTask(task, completedContainer);
-  });
+
+
+
+function setCheckBoxesToListen() {
+  for (const checkBox of checkBoxes) {
+    checkBox.addEventListener("click", () => {
+      let task = checkBox.parentElement;
+      completeTask(task, completedContainer);
+      console.log("Check");
+    });
+  }
 }
+
+// Task Object
+
+function createTaskFromForm () {
+  let title = document.querySelector("#title").value;
+  let dueDate = document.querySelector("#due-date").value;
+  let priority = document.querySelector("#priority").value;
+  let description = document.querySelector("#description").value;
+  console.log(title, dueDate, priority, description);
+  let newTask = task(title, dueDate, priority, description);
+  return newTask;
+}
+
+const task = (title, dueDate, priority, description) => {
+  let status = "To Do";
+
+  let setComplete = () => {
+    status = "Complete";
+  }
+
+  let setToDo = () => {
+    status = "To Do"
+  }
+  return { title, dueDate, priority, description, status, setComplete, setToDo };
+};
