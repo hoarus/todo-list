@@ -2,15 +2,17 @@ import { task } from './tasks.js';
 
 const project = (id, name, tasks = []) => {
   
-  let maxID = 0;
+  let maxID = -1;
 
-  let addNewTask = (newTask) => {
-    newTask.id = maxID + 1;
+  const addNewTask = (newTask) => {
     maxID += 1;
-    tasks.push(newTask)
+    tasks.push(newTask);
   }
 
-  return { id, name, tasks, maxID, addNewTask };
+  return { id, name, tasks, addNewTask, 
+    get maxID() {
+      return maxID;
+    }}
 };
 
 

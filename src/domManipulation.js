@@ -12,26 +12,6 @@ function hideItem(item) {
   item.classList.add("hidden");
 }
 
-function generateTask(title, dueDate, priority, description){
-  const newTask = createElement("div", "task");
-  const taskID = createElement("div", "id", "3");
-  taskID.classList.add("hidden");
-  const taskCheck = createElement("div", "check");
-  const taskTitle = createElement("h3", "task-title", title);
-  const taskDate = createElement("p", "task-date", dueDate);
-  const taskPriority = createElement("p", "task-priority", priority);
-  const taskDescription = createElement("p", "task-description", description);
-
-  newTask.appendChild(taskID);
-  newTask.appendChild(taskCheck);
-  newTask.appendChild(taskTitle);
-  newTask.appendChild(taskPriority);
-  newTask.appendChild(taskDate);
-  newTask.appendChild(taskDescription);
-
-  return newTask;
-}
-
 function createElement(type, classname, content, id) {
   const newElement = document.createElement(type);
   newElement.setAttribute('class',classname);
@@ -60,17 +40,29 @@ function hideTaskForm() {
 }
 
 function createTaskFromForm (project) {
+  let id = project.maxID + 1;
   let title = document.querySelector("#title").value;
   let dueDate = document.querySelector("#due-date").value;
   let priority = document.querySelector("#priority").value;
   let description = document.querySelector("#description").value;
-  console.log(title, dueDate, priority, description);
-  let newTask = task(title, dueDate, priority, description);
+  let newTask = task(id, title, dueDate, priority, description);
   return newTask;
 }
 
-function createTask(parent, title, dueDate, priority, description){
-  let newTask = generateTask(title, dueDate, priority, description);
+function createTask(parent, task){
+  const newTask = createElement("div", "task","", task.id);
+  const taskCheck = createElement("div", "check");
+  const taskTitle = createElement("h3", "task-title", task.title);
+  const taskDate = createElement("p", "task-date", task.dueDate);
+  const taskPriority = createElement("p", "task-priority", task.priority);
+  const taskDescription = createElement("p", "task-description", task.description);
+
+  newTask.appendChild(taskCheck);
+  newTask.appendChild(taskTitle);
+  newTask.appendChild(taskPriority);
+  newTask.appendChild(taskDate);
+  newTask.appendChild(taskDescription);
+
   parent.appendChild(newTask);
 }
 

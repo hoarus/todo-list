@@ -1,4 +1,4 @@
-const task = (title, dueDate, priority, description, id) => {
+const task = (id, title, dueDate, priority, description) => {
   let status = "To Do";
 
   let setComplete = () => {
