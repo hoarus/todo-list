@@ -10,7 +10,11 @@ const project = (id, name, tasks = {}) => {
     tasks[id] = newTask;
   }
 
-  return { id, name, tasks, addNewTask, 
+  let deleteTask = (id) => {
+    delete tasks[id];
+  }
+
+  return { id, name, tasks, addNewTask, deleteTask,
     get maxID() {
       return maxID;
     },

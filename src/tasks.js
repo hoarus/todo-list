@@ -15,6 +15,7 @@ const task = (id, title, dueDate, priority, description) => {
   let setToDo = () => {
     status = "To Do"
   }
+  
   return { id, title, dueDate, priority, description, setComplete, setToDo, toggleStatus,
     get status() {
       return status;

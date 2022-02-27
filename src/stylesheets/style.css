@@ -164,7 +164,7 @@ label {
 }
 
 .delete {
-  position: relative;
+  position: absolute;
   opacity: 0.3;
 }
 .close:hover, .delete:hover {

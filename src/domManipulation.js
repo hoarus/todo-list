@@ -31,7 +31,6 @@ function hideDetailedElements(task){
   description.classList.toggle("hidden");
   dueDate.classList.toggle("hidden");
   minimise.classList.toggle("maximise")
-  
 }
 
 // Public 
@@ -64,12 +63,16 @@ function createTaskFromForm (project) {
 function createTask(task){
   const newTask = createElement("div", "task","", task.id);
   const taskMin = createElement("div", "minimise");
+  taskMin.classList.add("maximise");
   const taskDel = createElement("div", "delete");
   const taskCheck = createElement("div", "check");
   const taskTitle = createElement("h3", "task-title", task.title);
   const taskDate = createElement("p", "task-date", task.dueDate);
+  taskDate.classList.add("hidden");
   const taskPriority = createElement("p", "task-priority", task.priority);
+  taskPriority.classList.add("hidden");
   const taskDescription = createElement("p", "task-description", task.description);
+  taskDescription.classList.add("hidden");
 
   newTask.appendChild(taskDel);
   newTask.appendChild(taskMin);
@@ -112,9 +115,22 @@ function setTaskListeners(project) {
       hideDetailedElements(task);
     });
   }
+  let deleteBoxes = document.getElementsByClassName("delete");
+  for (const deleteBox of deleteBoxes) {
+    deleteBox.addEventListener("click", () => {
+      let task = deleteBox.parentElement;
+      project.deleteTask(task.id);
+      task.remove();
+    });
+  }
   
 
 };
+
+function deleteTask(task) {
+  console.log(task);
+  
+}
 
 function loadTasks(project){
   let oldTasks = document.querySelectorAll(".task");
