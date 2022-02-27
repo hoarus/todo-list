@@ -44,6 +44,7 @@ import { project } from './projects.js';
     for (const task of currentProject.tasks) {
       createTask(task);
     }
+    setCheckBoxesToListen();
   });
 
   newTaskButton.addEventListener("click", () => {
@@ -65,6 +66,7 @@ import { project } from './projects.js';
 
 
 
+
   function setCheckBoxesToListen() {
     let checkBoxes = document.getElementsByClassName("check");
     for (const checkBox of checkBoxes) {
@@ -74,6 +76,26 @@ import { project } from './projects.js';
         completeTask(task, completedContainer, currentProject);
       });
     }
+    let minimiseBoxes = document.getElementsByClassName("minimise");
+    for (const minimiser of minimiseBoxes) {
+      minimiser.addEventListener("click", () => {
+        let task = minimiser.parentElement;
+        hideDetailedElements(task);
+      });
+    }
+
+  };
+
+  function hideDetailedElements(task){
+    let priority = task.querySelector(".task-priority");
+    let description = task.querySelector(".task-description");
+    let dueDate = task.querySelector(".task-date");
+    let minimise = task.querySelector(".minimise")
+    priority.classList.toggle("hidden");
+    description.classList.toggle("hidden");
+    dueDate.classList.toggle("hidden");
+    minimise.classList.toggle("maximise")
+    
   }
 
 

@@ -24,7 +24,7 @@ Each to-do will be an object with:
 
 
 NEXT STEPS:
-- Set "List project tasks" to accurately set tasks within their container (e.g. to do or complete)
+- Configure 'list project tasks' to accurately set tasks within their container (e.g. to do or complete)
 - Create button to decomplete task
 - Create button to delete task
 - Embed project functionality

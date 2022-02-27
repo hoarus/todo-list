@@ -206,6 +206,37 @@ label {
 }
 
 
+
+
+/* Maximise Button */
+.maximise, .minimise {
+  position: absolute;
+  right: 90%;
+  opacity: 0.3;
+  border-bottom: 0px;
+}
+.maximise:hover, .minimise:hover {
+  opacity: 1;
+}
+.maximise:before, .maximise:after, .minimise:after {
+  position: absolute;
+  left: 5px;
+  content: ' ';
+  height: 20px;
+  width: 4px;
+  background-color: #333;
+}
+
+.maximise:after, .minimise:after {
+  transform: rotate(-90deg);
+}
+
+
+
+.maximise:active {
+  transform: scale(1.1);
+}
+
 /* hidden */
 
 .hidden {

@@ -51,12 +51,14 @@ function createTaskFromForm (project) {
 
 function createTask(task){
   const newTask = createElement("div", "task","", task.id);
+  const taskMin = createElement("div", "minimise");
   const taskCheck = createElement("div", "check");
   const taskTitle = createElement("h3", "task-title", task.title);
   const taskDate = createElement("p", "task-date", task.dueDate);
   const taskPriority = createElement("p", "task-priority", task.priority);
   const taskDescription = createElement("p", "task-description", task.description);
 
+  newTask.appendChild(taskMin);
   newTask.appendChild(taskCheck);
   newTask.appendChild(taskTitle);
   newTask.appendChild(taskPriority);
