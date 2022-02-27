@@ -47,8 +47,53 @@ h2, h3 {
 nav{
   background-color: var(--backgroundAccent);
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
 }
+
+.new-project {
+  width: 15rem;
+  height: 50%;
+  line-height: 50%;
+  margin-right: 10%;
+  margin-left: 10%;
+  border: solid 2px var(--textPrimary);
+}
+
+/* Project Header Bar */
+.project-header-bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.project-header-bar > * {
+  flex: 1;
+}
+
+.project-header{
+  flex-grow: 0.7;
+}
+
+
+
+/* Edit Icon */
+
+.fa-edit {
+  opacity: 0.3;
+  position: relative;
+  transform-origin: left;
+}
+
+.fa-edit:hover {
+  opacity: 1;
+}
+
+.fa-edit:active{
+  transform: scale(1.1);
+  
+}
+
 
 
 /* Task boxes  */
@@ -255,6 +300,8 @@ label {
 .maximise:active {
   transform: scale(1.1);
 }
+
+
 
 /* hidden */
 

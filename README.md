@@ -24,7 +24,7 @@ Each to-do will be an object with:
 
 
 NEXT STEPS:
-- Configure 'list project tasks' to accurately set tasks within their container (e.g. to do or complete)
-- Create button to decomplete task
-- Create button to delete task
-- Embed project functionality
+- Create pop-up and logic to change project name
+- Create logic to create new project
+- Create logic to delete project
+- Implement on-computer database

@@ -7,15 +7,21 @@
   <title>To-Do App</title>
   <link href="normalise.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 <body>
   <div class="page-wrapper">
     <nav>
+      <button class="new-project">Delete Project</button>
       <h1>To-Do Application</h1>
+      <button class="new-project">New Project</button>
     </nav>
     <section class="project-view">
-      <h1>Project 11</h1>
-      <button class="list-project-tasks">List Project Tasks</button>
+      <div class="project-header-bar">
+        <button class="list-project-tasks">List Project Tasks</button>
+        <h1 class="project-header">Project 11</h1>
+        <i class='far fa-edit' style='font-size:36px'></i>
+      </div>
       <div class="task-containers">
         <div class="task-container to-do-container">
           <h2>To Do</h2>
