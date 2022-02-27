@@ -22,6 +22,18 @@ function createElement(type, classname, content, id) {
   return newElement;
 }
 
+function hideDetailedElements(task){
+  let priority = task.querySelector(".task-priority");
+  let description = task.querySelector(".task-description");
+  let dueDate = task.querySelector(".task-date");
+  let minimise = task.querySelector(".minimise")
+  priority.classList.toggle("hidden");
+  description.classList.toggle("hidden");
+  dueDate.classList.toggle("hidden");
+  minimise.classList.toggle("maximise")
+  
+}
+
 // Public 
 function displayTaskForm() {
   let pageWrapper = document.querySelector(".page-wrapper");
@@ -52,12 +64,14 @@ function createTaskFromForm (project) {
 function createTask(task){
   const newTask = createElement("div", "task","", task.id);
   const taskMin = createElement("div", "minimise");
+  const taskDel = createElement("div", "delete");
   const taskCheck = createElement("div", "check");
   const taskTitle = createElement("h3", "task-title", task.title);
   const taskDate = createElement("p", "task-date", task.dueDate);
   const taskPriority = createElement("p", "task-priority", task.priority);
   const taskDescription = createElement("p", "task-description", task.description);
 
+  newTask.appendChild(taskDel);
   newTask.appendChild(taskMin);
   newTask.appendChild(taskCheck);
   newTask.appendChild(taskTitle);
@@ -70,6 +84,7 @@ function createTask(task){
     parent = document.querySelector(".to-do-container");
   } else {
     parent = document.querySelector(".completed-container");
+    taskCheck.classList.add("complete");
   }
 
   parent.appendChild(newTask);
@@ -77,11 +92,42 @@ function createTask(task){
 
 function completeTask(task, destination, project) {
   let currentTask = project.tasks[task.id];
-  currentTask.setComplete();
-  destination.appendChild(task);
+  currentTask.toggleStatus();
+  loadTasks(project);
 }
 
+function setTaskListeners(project) {
+  let checkBoxes = document.getElementsByClassName("check");
+  for (const checkBox of checkBoxes) {
+    checkBox.addEventListener("click", () => {
+      let task = checkBox.parentElement;
+      let completedContainer = document.querySelector(".completed-container");
+      completeTask(task, completedContainer, project);
+    });
+  }
+  let minimiseBoxes = document.getElementsByClassName("minimise");
+  for (const minimiser of minimiseBoxes) {
+    minimiser.addEventListener("click", () => {
+      let task = minimiser.parentElement;
+      hideDetailedElements(task);
+    });
+  }
+  
 
+};
+
+function loadTasks(project){
+  let oldTasks = document.querySelectorAll(".task");
+  for (const task of oldTasks) {
+    task.remove();
+  }
+  for (const key in project.tasks) {
+    let task = project.tasks[key];
+    createTask(task);
+  }
+
+  setTaskListeners(project);
+}
 
 
 export {
@@ -90,4 +136,6 @@ export {
   createTask,
   completeTask,
   createTaskFromForm,
+  setTaskListeners,
+  loadTasks,
 };

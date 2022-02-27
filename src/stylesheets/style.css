@@ -162,25 +162,34 @@ label {
   height: 32px;
   opacity: 0.3;
 }
-.close:hover {
+
+.delete {
+  position: relative;
+  opacity: 0.3;
+}
+.close:hover, .delete:hover {
   opacity: 1;
 }
-.close:before, .close:after {
+.close:before, .close:after, .delete:before, .delete:after {
   position: absolute;
   left: 15px;
   content: ' ';
   height: 33px;
-  width: 2px;
+  width: 4px;
   background-color: #333;
 }
-.close:before {
+
+.delete:before, .delete:after {
+  height: 25px;
+}
+.close:before, .delete:before {
   transform: rotate(45deg);
 }
-.close:after {
+.close:after, .delete:after {
   transform: rotate(-45deg);
 }
 
-.close:active {
+.close:active, .delete:active {
   transform: scale(1.1);
 }
 /* Tick Button */
@@ -190,8 +199,8 @@ label {
   left: 90%;
   display: inline-block;
   transform: rotate(45deg);
-  height: 24px;
-  width: 12px;
+  height: 20px;
+  width: 10px;
   border-bottom: 4px solid black;;
   border-right: 4px solid black;;
   opacity: 0.3;
@@ -205,13 +214,23 @@ label {
   transform: rotate(45deg) scale(1.1);
 }
 
+.complete {
+  border-color: var(--textPrimary);
+  opacity: 1;
+}
+
+.complete:hover {
+  opacity: 0.3;
+}
+
 
 
 
 /* Maximise Button */
 .maximise, .minimise {
   position: absolute;
-  right: 90%;
+  left: 90%;
+  top: 2.8rem;
   opacity: 0.3;
   border-bottom: 0px;
 }
