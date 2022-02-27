@@ -49,7 +49,7 @@ function createTaskFromForm (project) {
   return newTask;
 }
 
-function createTask(parent, task){
+function createTask(task){
   const newTask = createElement("div", "task","", task.id);
   const taskCheck = createElement("div", "check");
   const taskTitle = createElement("h3", "task-title", task.title);
@@ -62,6 +62,13 @@ function createTask(parent, task){
   newTask.appendChild(taskPriority);
   newTask.appendChild(taskDate);
   newTask.appendChild(taskDescription);
+
+  let parent = "";
+  if (task.status == "To Do") {
+    parent = document.querySelector(".to-do-container");
+  } else {
+    parent = document.querySelector(".completed-container");
+  }
 
   parent.appendChild(newTask);
 }

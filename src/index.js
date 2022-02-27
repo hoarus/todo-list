@@ -28,6 +28,8 @@ import { project } from './projects.js';
     let task2 = task(2, "Test 2", "18/02/1994", "High", "Test1");
     let task3 = task(3, "Test 3", "18/02/1994", "High", "Test1");
     let task4 = task(4, "Test 4", "18/02/1994", "High", "Test1");
+    task4.setComplete();
+    task2.setComplete();
     currentProject.addNewTask(task1);
     currentProject.addNewTask(task2);
     currentProject.addNewTask(task3);
@@ -40,8 +42,7 @@ import { project } from './projects.js';
   listProjectTasksButton.addEventListener("click", () => {
     console.log(currentProject.tasks);
     for (const task of currentProject.tasks) {
-      let toDoContainer = document.querySelector(".to-do-container");
-      createTask(toDoContainer, task);
+      createTask(task);
     }
   });
 
@@ -56,8 +57,7 @@ import { project } from './projects.js';
   createTaskButton.addEventListener("click", () => {
     let newTask = createTaskFromForm(currentProject);
     currentProject.addNewTask(newTask);
-    let toDoContainer = document.querySelector(".to-do-container");
-    createTask(toDoContainer, newTask);
+    createTask(newTask);
     setCheckBoxesToListen();
     hideTaskForm();
   });
