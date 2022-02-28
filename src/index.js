@@ -1,6 +1,6 @@
 import './stylesheets/normalise.css'
 import './stylesheets/style.css';
-import {  displayTaskForm, hideTaskForm, createTaskFromForm, createTask, completeTask, setTaskListeners, loadTasks} from './domManipulation.js';
+import {  displayTaskForm, hideTaskForm, createTaskFromForm, createTask, completeTask, setTaskListeners, loadTasks, updateProjectHeader, displayProjectNameForm, hideProjectNameForm} from './domManipulation.js';
 import { task } from './tasks.js';
 import { project } from './projects.js';
 
@@ -12,13 +12,17 @@ import { project } from './projects.js';
   let closeTaskForm = document.querySelector(".close-task-form");
   let createTaskButton = document.querySelector(".create-task");
   let listProjectTasksButton = document.querySelector(".list-project-tasks");
+  let editProjectNameButton = document.querySelector(".edit-project-name");
+  let closeProjectNameFormButton = document.querySelector(".close-edit-project-name-form");
+  let submitProjectNameButton = document.querySelector(".submit-project-name");
 
   // Temporary Project Creation
   let currentProject = createDefaultProject();
   createTestTasks();
+  updateProjectHeader(currentProject);
 
   function createDefaultProject(){
-    let newProject = project(1, "My Project");
+    let newProject = project(1, "My Default Project");
     return newProject;
   };
 
@@ -57,5 +61,19 @@ import { project } from './projects.js';
     hideTaskForm();
   });
 
+  editProjectNameButton.addEventListener("click", () => {
+    displayProjectNameForm(currentProject);
+  });
+
+  closeProjectNameFormButton.addEventListener("click", () => {
+    hideProjectNameForm();
+  });
+
+  submitProjectNameButton.addEventListener("click", () => {
+    hideProjectNameForm();
+    let updatedProjectName = document.querySelector(".edit-project-name-input").value;
+    currentProject.name = updatedProjectName;
+    updateProjectHeader(currentProject);
+  });
 
 })();

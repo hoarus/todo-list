@@ -13,7 +13,7 @@ The user will have access to multiple projects.
 
 Each project will have:
 - Name
-- List of Todos (array of objects)
+- List of Todos (object of objects)
 
 Each to-do will be an object with:
 - Title
@@ -27,4 +27,5 @@ NEXT STEPS:
 - Create pop-up and logic to change project name
 - Create logic to create new project
 - Create logic to delete project
+- allow only one form at a time
 - Implement on-computer database

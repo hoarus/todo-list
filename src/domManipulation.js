@@ -145,6 +145,27 @@ function loadTasks(project){
   setTaskListeners(project);
 }
 
+function updateProjectHeader(currentProject){
+    let projectHeader = document.querySelector(".project-header");
+    projectHeader.textContent = currentProject.name;
+}
+
+function displayProjectNameForm(currentProject){
+  let container = document.querySelector(".edit-project-name-container");
+  displayItem(container);
+  let pageWrapper = document.querySelector(".page-wrapper");  
+  pageWrapper.classList.add("dimmed");
+  let input = document.querySelector(".edit-project-name-input");
+  input.value = currentProject.name;
+}
+
+function hideProjectNameForm() {
+  let container = document.querySelector(".edit-project-name-container");
+  let pageWrapper = document.querySelector(".page-wrapper");
+  hideItem(container);
+  pageWrapper.classList.remove("dimmed");
+}
+
 
 export {
   displayTaskForm,
@@ -154,4 +175,7 @@ export {
   createTaskFromForm,
   setTaskListeners,
   loadTasks,
+  updateProjectHeader,
+  displayProjectNameForm,
+  hideProjectNameForm
 };

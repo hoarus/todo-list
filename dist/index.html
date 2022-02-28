@@ -19,8 +19,8 @@
     <section class="project-view">
       <div class="project-header-bar">
         <button class="list-project-tasks">List Project Tasks</button>
-        <h1 class="project-header">Project 11</h1>
-        <i class='far fa-edit' style='font-size:36px'></i>
+        <h1 class="project-header"></h1>
+        <i class="far fa-edit edit-project-name" style='font-size:36px'></i>
       </div>
       <div class="task-containers">
         <div class="task-container to-do-container">
@@ -51,6 +51,16 @@
       </select>
       <button class="create-task" type="button">Add Task</button>
     </form> 
+  </div>
+
+  <div class="edit-project-name-container hidden">
+    <a href="#" class="close close-edit-project-name-form"></a>
+    <h2>Edit Project Name</h2>
+    <form class="edit-project-name-form">
+      <label for="edit-project-name">Project Name:</label>
+      <input type="text" id="edit-project-name-input" name="edit-project-name" class="edit-project-name-input">
+      <button class="submit-project-name" type="button">Update Project Name</button>
+    </form>
   </div>
   
 </body>

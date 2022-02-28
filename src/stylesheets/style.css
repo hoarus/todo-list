@@ -161,9 +161,14 @@ button:active {
   border-color: var(--textPrimary);
 }
 
+.submit-project-name {
+  margin-top: 1rem;
+  border-color: var(--textPrimary);
+}
+
 /* Pop-Ups */
 
-.task-form-container {
+.task-form-container, .edit-project-name-container {
   position: fixed;
   background-color: var(--backgroundAccent);
   border: solid 2px var(--textPrimary);
@@ -176,7 +181,7 @@ button:active {
   opacity: 1;
 }
 
-.task-form {
+.task-form, .edit-project-name-form {
   display: flex;
   flex-direction: column;
   width: 60%;
