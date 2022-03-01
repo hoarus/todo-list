@@ -3,6 +3,7 @@ import './stylesheets/style.css';
 import {  displayTaskForm, hideTaskForm, createTaskFromForm, createTask, completeTask, setTaskListeners, loadTasks, updateProjectHeader, displayProjectNameForm, hideProjectNameForm} from './domManipulation.js';
 import { task } from './tasks.js';
 import { project } from './projects.js';
+import { allProjects } from './allProjects.js';
 
 
 (function() {
@@ -43,6 +44,11 @@ import { project } from './projects.js';
   // Event Listeners
   listProjectTasksButton.addEventListener("click", () => {
     loadTasks(currentProject);
+    storeAllProjects();
+    // let allProjects = retrieveAllProjects;
+    // console.log(allProjects);
+    // let storedItem = JSON.parse(localStorage.getItem('currentProject'));
+    // convertStorageToProject(storedItem);
   });
 
   newTaskButton.addEventListener("click", () => {
@@ -75,5 +81,43 @@ import { project } from './projects.js';
     currentProject.name = updatedProjectName;
     updateProjectHeader(currentProject);
   });
+
+
+  // ALL IN PROGRESS (ENACTED BY LIST ALl TASKS BUTTON)
+
+  function convertStorageToProject(storedProject) {
+    let newProject = project(storedProject.id,  storedProject.name);
+    console.log(storedProject.tasks);
+    for (let key in storedProject.tasks) {
+      let storedTask = storedProject.tasks[key];  
+      let newTask = task(storedTask.id, storedTask.title, storedTask.dueDate, storedTask.priority, storedTask.description);    
+      console.log(newTask);
+      newProject.addNewTask(newTask);
+    };
+    return storedProject;
+  }
+
+  function checkForLocalStorage() {
+    if(!localStorage.getItem('allProjects')) {
+      let defaultProject = JSON.parse(localStorage.getItem('currentProject'));
+      convertStorageToProject(storedItem);
+      return 
+    } else {
+      setStyles();
+    }    
+  }
+
+  function storeAllProjects(){
+    let allProjectsToStore = allProjects({ 0: currentProject} );
+    console.log(allProjectsToStore);
+    // let storedItem = localStorage.setItem('allProjects', JSON.stringify(allProjects));
+    // console.log(storedItem);
+    return;
+  }
+
+  function retrieveAllProjects(){
+    let allProjects = localStorage.getItem('allProjects');
+    return allProjects;
+  }
 
 })();
