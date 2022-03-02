@@ -1,16 +1,16 @@
+import { project } from "./projects";
 
-const allProjects = (projects = {}) => {
+const AllProjects = (projects = []) => {
   
   let maxID = -1;
 
   const addNewProject = (newProject) => {
-    maxID += 1;
-    let id = maxID;
-    projects[id] = newProject;
+    projects.push(newProject);
   }
 
   let deleteProject = (id) => {
-    delete projects[id];
+    console.log("Function not configured");
+    // delete projects[id];
   }
 
   return { projects, addNewProject, deleteProject,
@@ -25,5 +25,5 @@ const allProjects = (projects = {}) => {
 
 
 export {
-  allProjects,
+  AllProjects,
 }

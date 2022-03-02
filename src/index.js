@@ -3,7 +3,7 @@ import './stylesheets/style.css';
 import {  displayTaskForm, hideTaskForm, createTaskFromForm, createTask, completeTask, setTaskListeners, loadTasks, updateProjectHeader, displayProjectNameForm, hideProjectNameForm} from './domManipulation.js';
 import { task } from './tasks.js';
 import { project } from './projects.js';
-import { allProjects } from './allProjects.js';
+import { AllProjects } from './allProjects.js';
 
 
 (function() {
@@ -18,9 +18,12 @@ import { allProjects } from './allProjects.js';
   let submitProjectNameButton = document.querySelector(".submit-project-name");
 
   // Temporary Project Creation
-  let currentProject = createDefaultProject();
-  createTestTasks();
+  let allProjects = retrieveAllProjects();
+  console.log(allProjects);
+  let currentProject = allProjects.projects[0];
+  //createTestTasks();
   updateProjectHeader(currentProject);
+  loadTasks(currentProject);
 
   function createDefaultProject(){
     let newProject = project(1, "My Default Project");
@@ -43,10 +46,11 @@ import { allProjects } from './allProjects.js';
 
   // Event Listeners
   listProjectTasksButton.addEventListener("click", () => {
+    // Note this is now essentially a Save Project button that needs to be renamed
     loadTasks(currentProject);
     storeAllProjects();
-    // let allProjects = retrieveAllProjects;
-    // console.log(allProjects);
+    // let currentProj = allProjects.projects;
+    // console.log(currentProj);
     // let storedItem = JSON.parse(localStorage.getItem('currentProject'));
     // convertStorageToProject(storedItem);
   });
@@ -87,15 +91,15 @@ import { allProjects } from './allProjects.js';
 
   function convertStorageToProject(storedProject) {
     let newProject = project(storedProject.id,  storedProject.name);
-    console.log(storedProject.tasks);
     for (let key in storedProject.tasks) {
       let storedTask = storedProject.tasks[key];  
       let newTask = task(storedTask.id, storedTask.title, storedTask.dueDate, storedTask.priority, storedTask.description);    
-      console.log(newTask);
       newProject.addNewTask(newTask);
     };
     return storedProject;
   }
+
+
 
   function checkForLocalStorage() {
     if(!localStorage.getItem('allProjects')) {
@@ -108,16 +112,68 @@ import { allProjects } from './allProjects.js';
   }
 
   function storeAllProjects(){
-    let allProjectsToStore = allProjects({ 0: currentProject} );
-    console.log(allProjectsToStore);
-    // let storedItem = localStorage.setItem('allProjects', JSON.stringify(allProjects));
-    // console.log(storedItem);
+    let allProjectsToStore = AllProjects([ currentProject] );
+    localStorage.setItem('allProjects', JSON.stringify(allProjectsToStore));
+
+    let storedItem = JSON.parse(localStorage.getItem('allProjects'));
+
     return;
   }
 
+  function storeAllProjectsv2() {
+    let allProjectsToStore = [currentProject];
+    let numberOfProjects = allProjectsToStore.length;
+    for (let i = 0; i < numberOfProjects; i++ ) {
+      let project = allProjectsToStore[i];
+      let storedProjectName = `Project ${i}`
+      let storedProject = localStorage.setItem(storedProjectName, JSON.stringify(project));
+      let openedProject = JSON.parse(localStorage.getItem(storedProjectName));
+    }
+  }
+
   function retrieveAllProjects(){
-    let allProjects = localStorage.getItem('allProjects');
+    let storedProjects = JSON.parse(localStorage.getItem('allProjects'));
+    let allProjects = createAllProjects(storedProjects);
     return allProjects;
   }
 
-})();
+
+  function createAllProjects(storedProjects) {
+    let allProjectsArray = []
+    for (const key in storedProjects.projects) {
+      let storedProject = storedProjects.projects[key];
+      let newProject = createProject(storedProject);
+      allProjectsArray.push(newProject);
+    }
+    let allProjects = AllProjects(allProjectsArray);
+    return allProjects;
+  }
+
+
+  function createProject(storedProject){
+    let id = storedProject.id;
+    let name = storedProject.name;
+    let newProject = project(id, name);
+    let storedTasks = createAllTasks(storedProject);
+    for (const task of storedTasks) {
+      newProject.addNewTask(task);
+    }
+    return newProject;
+  }
+
+  function createAllTasks(storedProject){
+    let allTasks = []
+    for (const key in storedProject.tasks) {
+      let storedTask = storedProject.tasks[key];
+      let id = storedTask.id;
+      let title = storedTask.title;
+      let dueDate = storedTask.dueDate;
+      let priority = storedTask.priority;
+      let description = storedTask.description;
+      let newTask = task(id, title, dueDate, priority, description)
+      allTasks.push(newTask)
+    }
+    return allTasks;
+  }
+
+})(); 

@@ -24,8 +24,11 @@ Each to-do will be an object with:
 
 
 NEXT STEPS:
+- Fix bug which doesn't allow the status of a task to be saved/loaded
 - Create logic to select project
 - Create logic to create new project
 - Create logic to delete project
 - allow only one form at a time
 - Implement on-computer database
+
+
