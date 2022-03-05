@@ -39,7 +39,7 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
   listProjectTasksButton.addEventListener("click", () => {
     // Note this is now essentially a Save Project button that needs to be renamed
     renderTasks(currentProject);
-    saveAllProjects(currentProject);
+    saveAllProjects(allProjects);
   });
 
   // New Task
@@ -78,7 +78,7 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
 
   // Select Project
   selectProjectButton.addEventListener("click", () => {
-    displaySelectProjectForm();
+    displaySelectProjectForm(allProjects);
   });
 
   closeSelectProjectFormButton.addEventListener("click", () => {

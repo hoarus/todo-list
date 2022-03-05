@@ -3,7 +3,7 @@ import { project } from './projects.js';
 import { AllProjects } from './allProjects.js';
 
 
-// Check for Storage - Not Comlete
+// Check for Storage - Not Complete
 function checkForLocalStorage() {
   if(!localStorage.getItem('allProjects')) {
     let defaultProject = JSON.parse(localStorage.getItem('currentProject'));
@@ -16,9 +16,8 @@ function checkForLocalStorage() {
 
 // Save Functionality
 
-function saveAllProjects(currentProject){
-  let allProjectsToStore = AllProjects([ currentProject] );
-  localStorage.setItem('allProjects', JSON.stringify(allProjectsToStore));
+function saveAllProjects(allProjects){
+  localStorage.setItem('allProjects', JSON.stringify(allProjects));
   return;
 }
 
@@ -27,7 +26,6 @@ function saveAllProjects(currentProject){
 
 function loadAllProjects(){
   let storedProjects = JSON.parse(localStorage.getItem('allProjects'));
-  console.log(storedProjects);
   let allProjects = recreateAllProjects(storedProjects);
   return allProjects;
 }
@@ -70,7 +68,6 @@ function recreateAllTasks(storedProject){
     if (storedTask.status == "Complete") {
       newTask.toggleStatus();
     }
-    console.log(newTask);
     allTasks.push(newTask)
   }
   return allTasks;

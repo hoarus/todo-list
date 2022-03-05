@@ -168,12 +168,41 @@ function hideProjectNameForm() {
 }
 
 // Select Project Form
-function displaySelectProjectForm() {
+function displaySelectProjectForm(allProjects) {
   let container = document.querySelector(".select-project-container");
   displayItem(container);
   let pageWrapper = document.querySelector(".page-wrapper");  
   pageWrapper.classList.add("dimmed");
+  displayProjectSelectors(allProjects);
 }
+
+function displayProjectSelectors(allProjects) {
+  let form = document.querySelector(".select-project-form");
+  let oldButtons = document.querySelectorAll(".select-this-project");
+  for (const button of oldButtons) {
+    button.remove();
+  }
+  for (let key in allProjects.projects) {
+    let project = allProjects.projects[key]
+    console.log(project);
+    let id = `select-project-${key}`; 
+    const projectButton = createElement("button", "select-this-project", project.name, id);
+    projectButton.type = "button";
+    form.appendChild(projectButton);
+  }
+  setProjectSelectorListeners();
+}
+
+function setProjectSelectorListeners() {
+  let projectSelectors = document.getElementsByClassName("select-this-project");
+  for (const selector of projectSelectors) {
+    selector.addEventListener("click", () => {
+      console.log("NEED TO BE IMPLEMENTED");
+      // let task = checkBox.parentElement;
+      // let completedContainer = document.querySelector(".completed-container");
+      // completeTask(task, completedContainer, project);
+    });
+  }}
 
 function hideSelectProjectForm() {
   let container = document.querySelector(".select-project-container");
