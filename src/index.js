@@ -1,6 +1,6 @@
 import './stylesheets/normalise.css'
 import './stylesheets/style.css';
-import {  displayTaskForm, hideTaskForm, createTaskFromForm, createTask, completeTask, setTaskListeners, renderTasks, updateProjectHeader, displayProjectNameForm, hideProjectNameForm} from './domManipulation.js';
+import {  displayTaskForm, hideTaskForm, createTaskFromForm, createTask, completeTask, setTaskListeners, renderTasks, updateProjectHeader, displayProjectNameForm, hideProjectNameForm, displaySelectProjectForm, hideSelectProjectForm } from './domManipulation.js';
 import { task } from './tasks.js';
 import { project } from './projects.js';
 import { AllProjects } from './allProjects.js';
@@ -10,13 +10,23 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
 (function() {
   // Query Selectors
     // Buttons
+  // New Task
   let newTaskButton = document.querySelector(".new-task");
   let closeTaskForm = document.querySelector(".close-task-form");
   let createTaskButton = document.querySelector(".create-task");
-  let listProjectTasksButton = document.querySelector(".list-project-tasks");
+  
+  // Project Name
   let editProjectNameButton = document.querySelector(".edit-project-name");
   let closeProjectNameFormButton = document.querySelector(".close-edit-project-name-form");
   let submitProjectNameButton = document.querySelector(".submit-project-name");
+
+  //Select Project
+  let selectProjectButton = document.querySelector(".select-project");
+  let closeSelectProjectFormButton = document.querySelector(".close-select-project-form");
+
+  // General
+  let listProjectTasksButton = document.querySelector(".list-project-tasks");
+
 
   // Temporary Project Creation
   let allProjects = loadAllProjects();
@@ -32,6 +42,7 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
     saveAllProjects(currentProject);
   });
 
+  // New Task
   newTaskButton.addEventListener("click", () => {
     displayTaskForm();
   });
@@ -48,6 +59,7 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
     hideTaskForm();
   });
 
+  // Edit Project Name
   editProjectNameButton.addEventListener("click", () => {
     displayProjectNameForm(currentProject);
   });
@@ -63,6 +75,15 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
     updateProjectHeader(currentProject);
   });
 
+
+  // Select Project
+  selectProjectButton.addEventListener("click", () => {
+    displaySelectProjectForm();
+  });
+
+  closeSelectProjectFormButton.addEventListener("click", () => {
+    hideSelectProjectForm();
+  })
 
   
 

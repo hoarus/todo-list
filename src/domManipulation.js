@@ -167,6 +167,20 @@ function hideProjectNameForm() {
   pageWrapper.classList.remove("dimmed");
 }
 
+// Select Project Form
+function displaySelectProjectForm() {
+  let container = document.querySelector(".select-project-container");
+  displayItem(container);
+  let pageWrapper = document.querySelector(".page-wrapper");  
+  pageWrapper.classList.add("dimmed");
+}
+
+function hideSelectProjectForm() {
+  let container = document.querySelector(".select-project-container");
+  let pageWrapper = document.querySelector(".page-wrapper");
+  hideItem(container);
+  pageWrapper.classList.remove("dimmed");
+}
 
 export {
   displayTaskForm,
@@ -178,5 +192,7 @@ export {
   renderTasks,
   updateProjectHeader,
   displayProjectNameForm,
-  hideProjectNameForm
+  hideProjectNameForm,
+  displaySelectProjectForm,
+  hideSelectProjectForm, 
 };

@@ -51,7 +51,7 @@ nav{
   justify-content: space-between;
 }
 
-.new-project {
+.new-project, .delete-project, .select-project {
   width: 15rem;
   height: 50%;
   line-height: 50%;
@@ -168,7 +168,7 @@ button:active {
 
 /* Pop-Ups */
 
-.task-form-container, .edit-project-name-container {
+.form-container {
   position: fixed;
   background-color: var(--backgroundAccent);
   border: solid 2px var(--textPrimary);
@@ -181,7 +181,7 @@ button:active {
   opacity: 1;
 }
 
-.task-form, .edit-project-name-form {
+.pop-up-form {
   display: flex;
   flex-direction: column;
   width: 60%;

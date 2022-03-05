@@ -12,8 +12,9 @@
 <body>
   <div class="page-wrapper">
     <nav>
-      <button class="new-project">Delete Project</button>
+      <button class="delete-project">Delete Project</button>
       <h1>To-Do Application</h1>
+      <button class="select-project">Select Project</button>
       <button class="new-project">New Project</button>
     </nav>
     <section class="project-view">
@@ -33,10 +34,10 @@
       </div>
     </section>
   </div>
-  <div class="task-form-container hidden">
+  <div class="form-container task-form-container hidden">
     <a href="#" class="close close-task-form"></a>
     <h2>Add a Task</h2>
-    <form class="task-form">
+    <form class="pop-up-form task-form">
       <label for="title">Task Title:</label>
       <input type="text" id="title" name="title" class="title">
       <label for="due-date">Due Date:</label>
@@ -53,13 +54,21 @@
     </form> 
   </div>
 
-  <div class="edit-project-name-container hidden">
+  <div class="form-container edit-project-name-container hidden">
     <a href="#" class="close close-edit-project-name-form"></a>
     <h2>Edit Project Name</h2>
-    <form class="edit-project-name-form">
+    <form class="pop-up-form edit-project-name-form">
       <label for="edit-project-name">Project Name:</label>
       <input type="text" id="edit-project-name-input" name="edit-project-name" class="edit-project-name-input">
       <button class="submit-project-name" type="button">Update Project Name</button>
+    </form>
+  </div>
+
+  <div class="form-container select-project-container hidden">
+    <a href="#" class="close close-select-project-form"></a>
+    <h2>Select Project</h2>
+    <form class="pop-up-form select-project-form">
+      <button class="select-project" type="button">Project 1</button>
     </form>
   </div>
   
