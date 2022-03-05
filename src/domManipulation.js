@@ -1,6 +1,7 @@
 //Functions
 
 import { task } from './tasks.js';
+import { project } from './projects.js';
 
 // Private
 
@@ -227,6 +228,16 @@ function hideNewProjectForm() {
   pageWrapper.classList.remove("dimmed");
 }
 
+function createProjectFromForm () {
+  let projectName = document.querySelector("#project-name");
+  let name = projectName.value;
+  let id = 2;
+  projectName.value = "";
+  let newProject = project(id, name);
+  hideNewProjectForm();
+  return newProject;
+}
+
 export {
   displayTaskForm,
   hideTaskForm,
@@ -242,4 +253,5 @@ export {
   hideSelectProjectForm, 
   displayNewProjectForm,
   hideNewProjectForm,
+  createProjectFromForm,
 };

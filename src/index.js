@@ -1,6 +1,9 @@
 import './stylesheets/normalise.css'
 import './stylesheets/style.css';
-import {  displayTaskForm, hideTaskForm, createTaskFromForm, createTask, completeTask, setTaskListeners, renderTasks, updateProjectHeader, displayProjectNameForm, hideProjectNameForm, displaySelectProjectForm, hideSelectProjectForm, displayNewProjectForm, hideNewProjectForm } from './domManipulation.js';
+import {  displayTaskForm, hideTaskForm, createTaskFromForm, createTask, completeTask, 
+  setTaskListeners, renderTasks, updateProjectHeader, displayProjectNameForm, hideProjectNameForm, 
+  displaySelectProjectForm, hideSelectProjectForm, displayNewProjectForm, hideNewProjectForm,
+  createProjectFromForm, } from './domManipulation.js';
 import { task } from './tasks.js';
 import { project } from './projects.js';
 import { AllProjects } from './allProjects.js';
@@ -27,6 +30,7 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
   // New Project
   let newProjectButton = document.querySelector(".new-project");
   let closeNewProjectFormButton = document.querySelector(".close-new-project-form");
+  let createNewProjectButton = document.querySelector(".create-project");
 
   // General
   let listProjectTasksButton = document.querySelector(".list-project-tasks");
@@ -35,9 +39,9 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
   // Temporary Project Creation
   let allProjects = loadAllProjects();
   let currentProject = allProjects.projects[0];
+  renderProject();
   //createTestTasks();
-  updateProjectHeader(currentProject);
-  renderTasks(currentProject);
+
 
   // Event Listeners
   listProjectTasksButton.addEventListener("click", () => {
@@ -98,5 +102,17 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
     hideNewProjectForm();
   })
 
+  createNewProjectButton.addEventListener("click", () => {
+    let newProject = createProjectFromForm();
+    allProjects.addNewProject(newProject);
+    console.log(newProject);
+    let newProjectPosition = (allProjects.projects.length) - 1;
+    currentProject = allProjects.projects[newProjectPosition];
+    renderProject();
+  })
 
+function renderProject() {
+  updateProjectHeader(currentProject);
+  renderTasks(currentProject);
+}
 })(); 
