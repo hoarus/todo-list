@@ -1,6 +1,6 @@
 import './stylesheets/normalise.css'
 import './stylesheets/style.css';
-import {  displayTaskForm, hideTaskForm, createTaskFromForm, createTask, completeTask, setTaskListeners, loadTasks, updateProjectHeader, displayProjectNameForm, hideProjectNameForm} from './domManipulation.js';
+import {  displayTaskForm, hideTaskForm, createTaskFromForm, createTask, completeTask, setTaskListeners, renderTasks, updateProjectHeader, displayProjectNameForm, hideProjectNameForm} from './domManipulation.js';
 import { task } from './tasks.js';
 import { project } from './projects.js';
 import { AllProjects } from './allProjects.js';
@@ -23,12 +23,12 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
   let currentProject = allProjects.projects[0];
   //createTestTasks();
   updateProjectHeader(currentProject);
-  loadTasks(currentProject);
+  renderTasks(currentProject);
 
   // Event Listeners
   listProjectTasksButton.addEventListener("click", () => {
     // Note this is now essentially a Save Project button that needs to be renamed
-    loadTasks(currentProject);
+    renderTasks(currentProject);
     saveAllProjects(currentProject);
   });
 
@@ -63,8 +63,6 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
     updateProjectHeader(currentProject);
   });
 
-
-  // ALL IN PROGRESS (ENACTED BY LIST ALl TASKS BUTTON)
 
   
 

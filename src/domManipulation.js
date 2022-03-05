@@ -96,7 +96,7 @@ function createTask(task){
 function completeTask(task, destination, project) {
   let currentTask = project.tasks[task.id];
   currentTask.toggleStatus();
-  loadTasks(project);
+  renderTasks(project);
   console.log(currentTask);
 }
 
@@ -133,7 +133,7 @@ function deleteTask(task) {
   
 }
 
-function loadTasks(project){
+function renderTasks(project){
   let oldTasks = document.querySelectorAll(".task");
   for (const task of oldTasks) {
     task.remove();
@@ -175,7 +175,7 @@ export {
   completeTask,
   createTaskFromForm,
   setTaskListeners,
-  loadTasks,
+  renderTasks,
   updateProjectHeader,
   displayProjectNameForm,
   hideProjectNameForm
