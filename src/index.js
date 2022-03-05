@@ -19,40 +19,16 @@ import { AllProjects } from './allProjects.js';
 
   // Temporary Project Creation
   let allProjects = retrieveAllProjects();
-  console.log(allProjects);
   let currentProject = allProjects.projects[0];
   //createTestTasks();
   updateProjectHeader(currentProject);
   loadTasks(currentProject);
-
-  function createDefaultProject(){
-    let newProject = project(1, "My Default Project");
-    return newProject;
-  };
-
-  function createTestTasks(){
-    let task1 = task(0, "Test 0", "18/02/1994", "High", "Test1");
-    let task2 = task(1, "Test 1", "18/02/1994", "High", "Test1");
-    let task3 = task(2, "Test 2", "18/02/1994", "High", "Test1");
-    let task4 = task(3, "Test 3", "18/02/1994", "High", "Test1");
-    task4.setComplete();
-    task2.setComplete();
-    currentProject.addNewTask(task1);
-    currentProject.addNewTask(task2);
-    currentProject.addNewTask(task3);
-    currentProject.addNewTask(task4);
-  }
-  
 
   // Event Listeners
   listProjectTasksButton.addEventListener("click", () => {
     // Note this is now essentially a Save Project button that needs to be renamed
     loadTasks(currentProject);
     storeAllProjects();
-    // let currentProj = allProjects.projects;
-    // console.log(currentProj);
-    // let storedItem = JSON.parse(localStorage.getItem('currentProject'));
-    // convertStorageToProject(storedItem);
   });
 
   newTaskButton.addEventListener("click", () => {
@@ -113,26 +89,14 @@ import { AllProjects } from './allProjects.js';
 
   function storeAllProjects(){
     let allProjectsToStore = AllProjects([ currentProject] );
-    localStorage.setItem('allProjects', JSON.stringify(allProjectsToStore));
-
-    let storedItem = JSON.parse(localStorage.getItem('allProjects'));
-
+    localStorage.setItem('allProjects', JSON.stringify(allProjectsToStore));s
     return;
   }
 
-  function storeAllProjectsv2() {
-    let allProjectsToStore = [currentProject];
-    let numberOfProjects = allProjectsToStore.length;
-    for (let i = 0; i < numberOfProjects; i++ ) {
-      let project = allProjectsToStore[i];
-      let storedProjectName = `Project ${i}`
-      let storedProject = localStorage.setItem(storedProjectName, JSON.stringify(project));
-      let openedProject = JSON.parse(localStorage.getItem(storedProjectName));
-    }
-  }
 
   function retrieveAllProjects(){
     let storedProjects = JSON.parse(localStorage.getItem('allProjects'));
+    console.log(storedProjects);
     let allProjects = createAllProjects(storedProjects);
     return allProjects;
   }
@@ -171,6 +135,10 @@ import { AllProjects } from './allProjects.js';
       let priority = storedTask.priority;
       let description = storedTask.description;
       let newTask = task(id, title, dueDate, priority, description)
+      if (storedTask.status == "Complete") {
+        newTask.toggleStatus();
+      }
+      console.log(newTask);
       allTasks.push(newTask)
     }
     return allTasks;

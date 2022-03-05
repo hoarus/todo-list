@@ -97,6 +97,7 @@ function completeTask(task, destination, project) {
   let currentTask = project.tasks[task.id];
   currentTask.toggleStatus();
   loadTasks(project);
+  console.log(currentTask);
 }
 
 function setTaskListeners(project) {
