@@ -3,14 +3,14 @@ import './stylesheets/style.css';
 import {  displayTaskForm, hideTaskForm, createTaskFromForm, createTask, completeTask, 
   setTaskListeners, renderTasks, updateProjectHeader, displayProjectNameForm, hideProjectNameForm, 
   displaySelectProjectForm, hideSelectProjectForm, displayNewProjectForm, hideNewProjectForm,
-  createProjectFromForm, } from './domManipulation.js';
+  createProjectFromForm, renderProject, } from './domManipulation.js';
 import { task } from './tasks.js';
 import { project } from './projects.js';
 import { AllProjects } from './allProjects.js';
 import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAndLoad.js';
 
 
-(function() {
+
   // Query Selectors
     // Buttons
   // New Task
@@ -39,7 +39,7 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
   // Temporary Project Creation
   let allProjects = loadAllProjects();
   let currentProject = allProjects.projects[0];
-  renderProject();
+  renderProject(currentProject);
   //createTestTasks();
 
 
@@ -111,8 +111,13 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
     renderProject();
   })
 
-function renderProject() {
-  updateProjectHeader(currentProject);
-  renderTasks(currentProject);
-}
-})(); 
+  function updateCurrentProject(newCurrentProject){
+    console.log(newCurrentProject);
+    currentProject  = newCurrentProject;
+    renderProject(currentProject);
+  }
+
+  export {
+    updateCurrentProject,
+  }
+

@@ -2,6 +2,7 @@
 
 import { task } from './tasks.js';
 import { project } from './projects.js';
+import { updateCurrentProject } from './index.js';
 
 // Private
 
@@ -191,17 +192,17 @@ function displayProjectSelectors(allProjects) {
     projectButton.type = "button";
     form.appendChild(projectButton);
   }
-  setProjectSelectorListeners();
+  setProjectSelectorListeners(allProjects);
 }
 
-function setProjectSelectorListeners() {
+function setProjectSelectorListeners(allProjects) {
   let projectSelectors = document.getElementsByClassName("select-this-project");
   for (const selector of projectSelectors) {
     selector.addEventListener("click", () => {
-      console.log("NEED TO BE IMPLEMENTED");
-      // let task = checkBox.parentElement;
-      // let completedContainer = document.querySelector(".completed-container");
-      // completeTask(task, completedContainer, project);
+      let project_position = (selector.id).substring(15);
+      let project = allProjects.projects[project_position]
+      hideSelectProjectForm()
+      updateCurrentProject(project);
     });
   }}
 
@@ -238,6 +239,11 @@ function createProjectFromForm () {
   return newProject;
 }
 
+function renderProject(currentProject) {
+  updateProjectHeader(currentProject);
+  renderTasks(currentProject);
+}
+
 export {
   displayTaskForm,
   hideTaskForm,
@@ -254,4 +260,5 @@ export {
   displayNewProjectForm,
   hideNewProjectForm,
   createProjectFromForm,
+  renderProject
 };

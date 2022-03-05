@@ -24,8 +24,6 @@ Each to-do will be an object with:
 
 
 NEXT STEPS:
-- Create logic to select project
-- Create logic to create new project
 - Create logic to delete project
 - allow only one form at a time
 - Test if no on-computer storage
