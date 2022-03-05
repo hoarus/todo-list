@@ -1,6 +1,6 @@
 import './stylesheets/normalise.css'
 import './stylesheets/style.css';
-import {  displayTaskForm, hideTaskForm, createTaskFromForm, createTask, completeTask, setTaskListeners, renderTasks, updateProjectHeader, displayProjectNameForm, hideProjectNameForm, displaySelectProjectForm, hideSelectProjectForm } from './domManipulation.js';
+import {  displayTaskForm, hideTaskForm, createTaskFromForm, createTask, completeTask, setTaskListeners, renderTasks, updateProjectHeader, displayProjectNameForm, hideProjectNameForm, displaySelectProjectForm, hideSelectProjectForm, displayNewProjectForm, hideNewProjectForm } from './domManipulation.js';
 import { task } from './tasks.js';
 import { project } from './projects.js';
 import { AllProjects } from './allProjects.js';
@@ -23,6 +23,10 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
   //Select Project
   let selectProjectButton = document.querySelector(".select-project");
   let closeSelectProjectFormButton = document.querySelector(".close-select-project-form");
+
+  // New Project
+  let newProjectButton = document.querySelector(".new-project");
+  let closeNewProjectFormButton = document.querySelector(".close-new-project-form");
 
   // General
   let listProjectTasksButton = document.querySelector(".list-project-tasks");
@@ -85,6 +89,14 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
     hideSelectProjectForm();
   })
 
-  
+  // New Project
+  newProjectButton.addEventListener("click", () => {
+    displayNewProjectForm();
+  });
+
+  closeNewProjectFormButton.addEventListener("click", () => {
+    hideNewProjectForm();
+  })
+
 
 })(); 
