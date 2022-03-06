@@ -3,7 +3,7 @@ import './stylesheets/style.css';
 import {  displayTaskForm, hideTaskForm, createTaskFromForm, createTask, completeTask, 
   setTaskListeners, renderTasks, updateProjectHeader, displayProjectNameForm, hideProjectNameForm, 
   displaySelectProjectForm, hideSelectProjectForm, displayNewProjectForm, hideNewProjectForm,
-  createProjectFromForm, renderProject, } from './domManipulation.js';
+  createProjectFromForm, renderProject, displayDeleteProjectForm, hideDeleteProjectForm } from './domManipulation.js';
 import { task } from './tasks.js';
 import { project } from './projects.js';
 import { AllProjects } from './allProjects.js';
@@ -31,6 +31,10 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
   let newProjectButton = document.querySelector(".new-project");
   let closeNewProjectFormButton = document.querySelector(".close-new-project-form");
   let createNewProjectButton = document.querySelector(".create-project");
+
+  // Delete Project
+  let deleteProjectButton = document.querySelector(".delete-project");
+  let closeDeleteProjectFormButton = document.querySelector(".close-delete-project-form");
 
   // General
   let listProjectTasksButton = document.querySelector(".list-project-tasks");
@@ -116,6 +120,15 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
     currentProject  = newCurrentProject;
     renderProject(currentProject);
   }
+
+  // Delete Project
+  deleteProjectButton.addEventListener("click", () => {
+    displayDeleteProjectForm();
+  });
+
+  closeDeleteProjectFormButton.addEventListener("click", () => {
+    hideDeleteProjectForm();
+  });
 
   export {
     updateCurrentProject,

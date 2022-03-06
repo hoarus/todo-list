@@ -244,6 +244,22 @@ function renderProject(currentProject) {
   renderTasks(currentProject);
 }
 
+
+// Delete Project 
+function displayDeleteProjectForm() {
+  let container = document.querySelector(".delete-project-container");
+  displayItem(container);
+  let pageWrapper = document.querySelector(".page-wrapper");  
+  pageWrapper.classList.add("dimmed");
+}
+
+function hideDeleteProjectForm() {
+  let container = document.querySelector(".delete-project-container");
+  let pageWrapper = document.querySelector(".page-wrapper");
+  hideItem(container);
+  pageWrapper.classList.remove("dimmed");
+}
+
 export {
   displayTaskForm,
   hideTaskForm,
@@ -260,5 +276,7 @@ export {
   displayNewProjectForm,
   hideNewProjectForm,
   createProjectFromForm,
-  renderProject
+  renderProject,
+  displayDeleteProjectForm,
+  hideDeleteProjectForm,
 };
