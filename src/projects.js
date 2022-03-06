@@ -1,6 +1,6 @@
 import { task } from './tasks.js';
 
-const project = (id, name, tasks = {}) => {
+const project = ( name, tasks = {}) => {
   
   let maxID = -1;
 
@@ -14,7 +14,7 @@ const project = (id, name, tasks = {}) => {
     delete tasks[id];
   }
 
-  return { id, name, tasks, addNewTask, deleteTask,
+  return { name, tasks, addNewTask, deleteTask,
     get maxID() {
       return maxID;
     },

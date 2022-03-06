@@ -13,7 +13,7 @@ function checkForLocalStorage() {
 }
 
 function createDefaultProject(){
-  let defaultProject = project(0, "My Default Project");
+  let defaultProject = project( "My Default Project");
   let allProjects = AllProjects([ defaultProject ]);
   return allProjects;
 }
@@ -54,9 +54,8 @@ function recreateAllProjects(storedProjects) {
 
 
 function recreateProject(storedProject){
-  let id = storedProject.id;
   let name = storedProject.name;
-  let newProject = project(id, name);
+  let newProject = project(name);
   let storedTasks = recreateAllTasks(storedProject);
   for (const task of storedTasks) {
     newProject.addNewTask(task);

@@ -239,9 +239,8 @@ function hideNewProjectForm() {
 function createProjectFromForm () {
   let projectName = document.querySelector("#project-name");
   let name = projectName.value;
-  let id = 2;
   projectName.value = "";
-  let newProject = project(id, name);
+  let newProject = project( name);
   hideNewProjectForm();
   return newProject;
 }
