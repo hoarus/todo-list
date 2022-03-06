@@ -37,6 +37,9 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
   let closeDeleteProjectFormButton = document.querySelector(".close-delete-project-form");
   let confirmDeleteProjectButton = document.querySelector(".confirm-delete-project");
 
+  // All Form Containers
+  let allFormContainers = document.querySelectorAll("form-container");
+
   // General
   let saveButton = document.querySelector(".save");
 

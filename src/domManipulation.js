@@ -4,6 +4,7 @@ import { task } from './tasks.js';
 import { project } from './projects.js';
 import { updateCurrentProject, updateCurrentProjectPosition } from './index.js';
 
+
 // Private
 
 function displayItem(item) {
@@ -35,8 +36,16 @@ function hideDetailedElements(task){
   minimise.classList.toggle("maximise")
 }
 
+function hideAllForms(){
+  let allFormContainers = document.querySelectorAll(".form-container");
+  for (const container of allFormContainers) {
+    container.classList.add("hidden");
+  }
+}
+
 // Public 
 function displayTaskForm() {
+  hideAllForms();
   let pageWrapper = document.querySelector(".page-wrapper");
   let taskForm = document.querySelector(".task-form-container");
   displayItem(taskForm);
@@ -99,7 +108,6 @@ function completeTask(task, destination, project) {
   let currentTask = project.tasks[task.id];
   currentTask.toggleStatus();
   renderTasks(project);
-  console.log(currentTask);
 }
 
 function setTaskListeners(project) {
@@ -130,10 +138,6 @@ function setTaskListeners(project) {
 
 };
 
-function deleteTask(task) {
-  console.log(task);
-  
-}
 
 function renderTasks(project){
   let oldTasks = document.querySelectorAll(".task");
@@ -154,6 +158,7 @@ function updateProjectHeader(currentProject){
 }
 
 function displayProjectNameForm(currentProject){
+  hideAllForms();
   let container = document.querySelector(".edit-project-name-container");
   displayItem(container);
   let pageWrapper = document.querySelector(".page-wrapper");  
@@ -171,6 +176,7 @@ function hideProjectNameForm() {
 
 // Select Project Form
 function displaySelectProjectForm(allProjects) {
+  hideAllForms();
   let container = document.querySelector(".select-project-container");
   displayItem(container);
   let pageWrapper = document.querySelector(".page-wrapper");  
@@ -186,7 +192,6 @@ function displayProjectSelectors(allProjects) {
   }
   for (let key in allProjects.projects) {
     let project = allProjects.projects[key]
-    console.log(project);
     let id = `select-project-${key}`; 
     const projectButton = createElement("button", "select-this-project", project.name, id);
     projectButton.type = "button";
@@ -217,6 +222,7 @@ function hideSelectProjectForm() {
 // New Project Form
 
 function displayNewProjectForm(){
+  hideAllForms();
   let container = document.querySelector(".new-project-container");
   displayItem(container);
   let pageWrapper = document.querySelector(".page-wrapper");  
@@ -248,6 +254,7 @@ function renderProject(currentProject) {
 
 // Delete Project 
 function displayDeleteProjectForm() {
+  hideAllForms();
   let container = document.querySelector(".delete-project-container");
   displayItem(container);
   let pageWrapper = document.querySelector(".page-wrapper");  
