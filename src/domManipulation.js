@@ -2,7 +2,7 @@
 
 import { task } from './tasks.js';
 import { project } from './projects.js';
-import { updateCurrentProject } from './index.js';
+import { updateCurrentProject, updateCurrentProjectPosition } from './index.js';
 
 // Private
 
@@ -199,10 +199,11 @@ function setProjectSelectorListeners(allProjects) {
   let projectSelectors = document.getElementsByClassName("select-this-project");
   for (const selector of projectSelectors) {
     selector.addEventListener("click", () => {
-      let project_position = (selector.id).substring(15);
-      let project = allProjects.projects[project_position]
+      let projectPosition = (selector.id).substring(15);
+      let project = allProjects.projects[projectPosition]
       hideSelectProjectForm()
       updateCurrentProject(project);
+      updateCurrentProjectPosition(projectPosition);
     });
   }}
 

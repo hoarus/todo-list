@@ -8,9 +8,8 @@ const AllProjects = (projects = []) => {
     projects.push(newProject);
   }
 
-  let deleteProject = (id) => {
-    console.log("Function not configured");
-    // delete projects[id];
+  let deleteProject = (position) => {
+    projects.splice(position, 1);
   }
 
   return { projects, addNewProject, deleteProject,

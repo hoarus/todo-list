@@ -48,15 +48,26 @@ nav{
   background-color: var(--backgroundAccent);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 2rem;
 }
+
+nav > * {
+  flex: 0 0 max-content;
+}
+
+nav > h1 {
+  width: 200%;
+  margin-inline: 5rem;
+}
+
+
 
 .new-project, .delete-project, .select-project {
   width: 15rem;
   height: 50%;
   line-height: 50%;
-  margin-right: 10%;
-  margin-left: 10%;
+
   border: solid 2px var(--textPrimary);
 }
 
@@ -64,32 +75,45 @@ nav{
 .project-header-bar{
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 2rem;
 }
 
 .project-header-bar > * {
-  flex: 1;
+
 }
 
 .project-header{
-  flex-grow: 0.7;
+  width: max-content;
+  flex-grow: 0;
 }
 
 
 
 /* Edit Icon */
 
-.fa-edit {
+.fa-edit, .fa-save {
   opacity: 0.3;
   position: relative;
   transform-origin: left;
+  width: auto;
+  flex-grow: 0;
+  
 }
 
-.fa-edit:hover {
+.fa-edit {
+
+}
+
+.fa-save {
+
+}
+
+.fa-edit:hover, .fa-save:hover {
   opacity: 1;
 }
 
-.fa-edit:active{
+.fa-edit:active, .fa-save:active {
   transform: scale(1.1);
   
 }

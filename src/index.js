@@ -35,20 +35,22 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
   // Delete Project
   let deleteProjectButton = document.querySelector(".delete-project");
   let closeDeleteProjectFormButton = document.querySelector(".close-delete-project-form");
+  let confirmDeleteProjectButton = document.querySelector(".confirm-delete-project");
 
   // General
-  let listProjectTasksButton = document.querySelector(".list-project-tasks");
+  let saveButton = document.querySelector(".save");
 
 
   // Temporary Project Creation
   let allProjects = loadAllProjects();
   let currentProject = allProjects.projects[0];
+  let currentProjectPosition = 0;
   renderProject(currentProject);
   //createTestTasks();
 
 
   // Event Listeners
-  listProjectTasksButton.addEventListener("click", () => {
+  saveButton.addEventListener("click", () => {
     // Note this is now essentially a Save Project button that needs to be renamed
     renderTasks(currentProject);
     saveAllProjects(allProjects);
@@ -111,15 +113,12 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
     allProjects.addNewProject(newProject);
     console.log(newProject);
     let newProjectPosition = (allProjects.projects.length) - 1;
+    currentProjectPosition = newProjectPosition;
     currentProject = allProjects.projects[newProjectPosition];
-    renderProject();
+    renderProject(currentProject);
   })
 
-  function updateCurrentProject(newCurrentProject){
-    console.log(newCurrentProject);
-    currentProject  = newCurrentProject;
-    renderProject(currentProject);
-  }
+
 
   // Delete Project
   deleteProjectButton.addEventListener("click", () => {
@@ -130,7 +129,26 @@ import { checkForLocalStorage, saveAllProjects, loadAllProjects } from './saveAn
     hideDeleteProjectForm();
   });
 
+  confirmDeleteProjectButton.addEventListener("click", () => {
+    allProjects.deleteProject(currentProjectPosition);
+    hideDeleteProjectForm();
+    currentProject = allProjects.projects[0];
+    currentProjectPosition = 0;
+    renderProject(currentProject);
+  });
+
+
+  function updateCurrentProject(newCurrentProject){
+    currentProject  = newCurrentProject;
+    renderProject(currentProject);
+  }
+
+  function updateCurrentProjectPosition(newPosition){
+    currentProjectPosition = newPosition;
+  }
+
   export {
     updateCurrentProject,
+    updateCurrentProjectPosition,
   }
 
