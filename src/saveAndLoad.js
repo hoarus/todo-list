@@ -5,13 +5,17 @@ import { AllProjects } from './allProjects.js';
 
 // Check for Storage - Not Complete
 function checkForLocalStorage() {
-  if(!localStorage.getItem('allProjects')) {
-    let defaultProject = JSON.parse(localStorage.getItem('currentProject'));
-    convertStorageToProject(storedItem);
-    return 
+  if(localStorage.getItem('allProjects')) {
+    return true;
   } else {
-    setStyles();
+    return false;
   }    
+}
+
+function createDefaultProject(){
+  let defaultProject = project(0, "My Default Project");
+  let allProjects = AllProjects([ defaultProject ]);
+  return allProjects;
 }
 
 // Save Functionality
@@ -25,8 +29,13 @@ function saveAllProjects(allProjects){
 
 
 function loadAllProjects(){
-  let storedProjects = JSON.parse(localStorage.getItem('allProjects'));
-  let allProjects = recreateAllProjects(storedProjects);
+  let allProjects = "";
+  if (checkForLocalStorage() == true) {
+    let storedProjects = JSON.parse(localStorage.getItem('allProjects'));
+    allProjects = recreateAllProjects(storedProjects); 
+  } else {
+    allProjects = createDefaultProject();
+  }
   return allProjects;
 }
 

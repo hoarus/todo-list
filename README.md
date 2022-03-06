@@ -23,9 +23,3 @@ Each to-do will be an object with:
 - Completion Status (Complete, Pending)
 
 
-NEXT STEPS:
-- allow only one form at a time
-- Test if no on-computer storage
-
-
-
