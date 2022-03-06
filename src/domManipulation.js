@@ -19,6 +19,8 @@ const DOMstuff = () => {
   let currentProjectPosition = 0;
   renderProject(currentProject);
 
+  // Helper Methods
+
   function displayItem(item) {
     item.classList.remove("hidden");
   }
@@ -37,17 +39,6 @@ const DOMstuff = () => {
     return newElement;
   }
 
-  function hideDetailedElements(task){
-    let priority = task.querySelector(".task-priority");
-    let description = task.querySelector(".task-description");
-    let dueDate = task.querySelector(".task-date");
-    let minimise = task.querySelector(".minimise")
-    priority.classList.toggle("hidden");
-    description.classList.toggle("hidden");
-    dueDate.classList.toggle("hidden");
-    minimise.classList.toggle("maximise")
-  }
-
   function hideAllForms(){
     let allFormContainers = document.querySelectorAll(".form-container");
     for (const container of allFormContainers) {
@@ -55,7 +46,11 @@ const DOMstuff = () => {
     }
   }
 
-  // Public 
+
+  // Form Methods
+
+
+
   function displayTaskForm() {
     hideAllForms();
     let pageWrapper = document.querySelector(".page-wrapper");
@@ -105,6 +100,11 @@ const DOMstuff = () => {
     newTask.appendChild(taskDate);
     newTask.appendChild(taskDescription);
 
+    let parent = determineTaskContainer(newTask, taskCheck)
+    parent.appendChild(newTask);
+  }
+
+  function determineTaskContainer(task, taskCheck){
     let parent = "";
     if (task.status == "To Do") {
       parent = document.querySelector(".to-do-container");
@@ -112,8 +112,18 @@ const DOMstuff = () => {
       parent = document.querySelector(".completed-container");
       taskCheck.classList.add("complete");
     }
+    return parent;
+  }  
 
-    parent.appendChild(newTask);
+  function hideDetailedElements(task){
+    let priority = task.querySelector(".task-priority");
+    let description = task.querySelector(".task-description");
+    let dueDate = task.querySelector(".task-date");
+    let minimise = task.querySelector(".minimise")
+    priority.classList.toggle("hidden");
+    description.classList.toggle("hidden");
+    dueDate.classList.toggle("hidden");
+    minimise.classList.toggle("maximise")
   }
 
   function completeTask(task, destination, project) {
